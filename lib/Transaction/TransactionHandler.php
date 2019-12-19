@@ -42,6 +42,7 @@ class TransactionHandler extends AbstractHandler
         $amount,
         Card $card,
         Customer $customer,
+        $cardCvv = null,
         $installments = 1,
         $capture = true,
         $postBackUrl = null,
@@ -53,6 +54,7 @@ class TransactionHandler extends AbstractHandler
                 'amount'       => $amount,
                 'card'         => $card,
                 'customer'     => $customer,
+                'card_cvv' => $cardCvv,
                 'installments' => $installments,
                 'capture'      => $capture,
                 'postbackUrl'  => $postBackUrl,
@@ -239,3 +241,4 @@ class TransactionHandler extends AbstractHandler
         return $events;
     }
 }
+

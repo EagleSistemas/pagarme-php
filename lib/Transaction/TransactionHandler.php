@@ -43,7 +43,7 @@ class TransactionHandler extends AbstractHandler
         $amount,
         Card $card,
         Customer $customer,
-        $cardCvv = null,   //CardCvv
+        $cardCvv = null,
         $installments = 1,
         $capture = true,
         $postBackUrl = null,

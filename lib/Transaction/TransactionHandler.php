@@ -31,6 +31,7 @@ class TransactionHandler extends AbstractHandler
      * @param int $amount
      * @param \PagarMe\Sdk\Card\Card $card
      * @param \PagarMe\Sdk\Customer\Customer $customer
+     * @param int $cardCvv
      * @param int $installments
      * @param boolean $capture
      * @param string $postBackUrl

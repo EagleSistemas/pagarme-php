@@ -37,6 +37,7 @@ class TransactionHandler extends AbstractHandler
      * @param string $postBackUrl
      * @param array $metadata
      * @param array $extraAttributes
+     * @param string $softDescriptor
      * @return CreditCardTransaction
      */
     public function creditCardTransaction(
@@ -48,7 +49,8 @@ class TransactionHandler extends AbstractHandler
         $capture = true,
         $postBackUrl = null,
         $metadata = null,
-        $extraAttributes = []
+        $extraAttributes = [],
+        $softDescriptor = ''
     ) {
         $transactionData = array_merge(
             [
@@ -59,7 +61,8 @@ class TransactionHandler extends AbstractHandler
                 'installments' => $installments,
                 'capture'      => $capture,
                 'postbackUrl'  => $postBackUrl,
-                'metadata'     => $metadata
+                'metadata'     => $metadata,
+                'soft_descriptor' => $softDescriptor
             ],
             $extraAttributes
         );

@@ -20,12 +20,12 @@ class BoletoTransactionCreate extends TransactionCreate
     public function getPayload()
     {
         $basicData = parent::getPayload();
-
         $boletoData = [
             'boleto_expiration_date' => $this->transaction->getBoletoExpirationDate(),
             'async' => $this->transaction->getAsync(),
             'boleto_instructions' => $this->transaction->getBoletoInstructions(),
-            'soft_descriptor' => $this->transaction->getSoftDescriptor()
+            'soft_descriptor' => $this->transaction->getSoftDescriptor(),
+            'boleto_rules' => $this->transaction->getBoletoRules()
         ];
 
         return array_merge($basicData, $boletoData);

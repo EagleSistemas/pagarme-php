@@ -80,6 +80,8 @@ class TransactionHandler extends AbstractHandler
      * @param string $postBackUrl
      * @param mixed $metadata
      * @param array $extraAttributes
+     * @param string $boletoRules
+     * @param string $boletoInstructions
      * @return BoletoTransaction
      */
     public function boletoTransaction(
@@ -87,22 +89,26 @@ class TransactionHandler extends AbstractHandler
         Customer $customer,
         $postBackUrl,
         $metadata = null,
-        $extraAttributes = []
+        $extraAttributes = [],
+        $boletoExpirationDate = null,
+        $boletoRules = '',
+        $boletoInstructions = ''
     ) {
         $transactionData = array_merge(
             [
                 'amount'      => $amount,
                 'customer'    => $customer,
                 'postbackUrl' => $postBackUrl,
-                'metadata'    => $metadata
+                'metadata'    => $metadata,
+                'boletoExpirationDate' => $boletoExpirationDate,
+                'boletoRules' => $boletoRules,
+                'boletoInstructions' => $boletoInstructions
             ],
             $extraAttributes
         );
 
         $transaction = new BoletoTransaction($transactionData);
-
         $request = new BoletoTransactionCreate($transaction);
-
         $response = $this->client->send($request);
 
         return $this->buildTransaction($response);
